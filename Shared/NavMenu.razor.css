@@ -1,0 +1,82 @@
+.navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.top-row {
+    height: 3.5rem;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.navbar-brand {
+    font-size: 1rem;
+}
+
+.oi {
+    width: 2rem;
+    font-size: 1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.nav-item {
+    font-size: 0.8rem;
+    padding-bottom: 0.5rem;
+
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+
+    .nav-item ::deep .oi {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem; 
+    }
+
+    .nav-item:first-of-type {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item ::deep a {
+        color: #FFFFFF; 
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+    }
+
+        .nav-item ::deep a.active {
+            background-color: #FFFFFF; 
+            color: #000000;
+        }
+
+        .nav-item ::deep a:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: #FFFFFF;
+        }
+
+    
+
+@media (min-width: 641px) {
+    .navbar-toggler {
+        display: none;
+    }
+
+    .collapse {
+       
+        display: block;
+    }
+
+    .nav-scrollable {
+        background-color: #32293F; 
+        height: calc(100vh - 3.5rem);
+        overflow-y: auto;
+
+    }
+}

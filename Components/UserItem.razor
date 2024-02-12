@@ -1,0 +1,16 @@
+﻿
+<div class="col-4">
+	<h2>Użytkownicy</h2>
+	<div class="dropzone bg-light p-3 my-3 border border-1 rounded">
+		@foreach(var item in Users)
+		{
+			<div class="draggable alert" draggable="true"
+				@ondragstart="@(()=>OnStartDragHandler(item))">
+				<img src="img/@item.Image" />
+				@item.Name
+				@item.Surname
+				@item.City
+			</div>
+		}
+	</div>
+</div>
