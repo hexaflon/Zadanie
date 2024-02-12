@@ -20,6 +20,7 @@ namespace Zadanie.Components
 
 		private void LockUser()
 		{
+
 			
 			IsVisible = false; 
 		}

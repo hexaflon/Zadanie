@@ -80,8 +80,8 @@ namespace Zadanie.Components
 				icon = _selected.Name
 			};
 
-			UserLogs.logs.Add(log);
-		}
+            UserLogs.logs.Insert(0, log);
+        }
 		private void ChangeGroup(Group group)
 		{
 			_selected = group;

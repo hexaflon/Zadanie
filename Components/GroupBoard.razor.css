@@ -13,23 +13,31 @@
     background-color: white; 
     color: black; 
     border-radius: 10px; 
-    transition: height 0.5s ease; 
+    transition: padding-top 0.5s ease; 
+    transition-delay: 0.1s;
+    text-align:center;
+}
+.active{
+    padding-top:10px;
 }
 
     .btn.active {
-        height: 100px;
         animation: bounce 0.5s;
     }
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-
-    40% {
-        transform: translateY(-30px);
-    }
-
-    60% {
+    50% {
         transform: translateY(-15px);
     }
+    0% 100% {
+        transform: translateY(0);
+    }
+}
+.user-list{
+    margin-top:20px;
+}
+.container-group{
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 10px;
+    padding: 10px;
+    height:auto;
 }

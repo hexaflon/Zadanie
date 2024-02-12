@@ -1,7 +1,7 @@
 ﻿@using Zadanie.Models
 @inject SharedStateService SharedState
 @inject UserGroupLogger UserLogs
-
+<div class="container-group">
 <div class="menu-group">
 	@foreach(var group in _groups)
 	{
@@ -28,4 +28,5 @@
 				OnStartDrag="OnDragStartHandler" />
 		</div>
 	}
+</div>
 </div>

@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.JSInterop;
 using Zadanie.Models;
 
 namespace Zadanie.Components
@@ -7,6 +9,11 @@ namespace Zadanie.Components
     {
         [Parameter]
         public List<User> Users { get; set; } = new();
+
+		private int? InsertIndex { get; set; } = null;
+
+		private int logCount { get; set; } = 0;
+
 
 		[Parameter]
 		public EventCallback<User> OnDragStart {  get; set; }
@@ -27,7 +34,7 @@ namespace Zadanie.Components
 			SharedState.CurrentDraggedUser = item;
 			OnDragStart.InvokeAsync(item);
 			Users.Remove(item);
-			addlog(item, "usunięty z");
+            InvokeAsync(StateHasChanged);
 
 
         }
@@ -37,11 +44,13 @@ namespace Zadanie.Components
 		{
 			OnDrop.InvokeAsync();
 			SharedState.CurrentDraggedUser.Icon = null;
-			Users.Add(SharedState.CurrentDraggedUser);
+			if (InsertIndex == null) Users.Add(SharedState.CurrentDraggedUser);
+			else Users.Insert((int)InsertIndex, SharedState.CurrentDraggedUser);
 			addlog(SharedState.CurrentDraggedUser,"przeniesiony do");
+			InvokeAsync(StateHasChanged);
 
 		}
-
+		
         private void addlog(User user, string state)
         {
 			var log = new log
@@ -50,7 +59,7 @@ namespace Zadanie.Components
 				icon = "default-icon"
             };
 
-            UserLogs.logs.Add(log);
+            UserLogs.logs.Insert(0,log);
         }
 
     }

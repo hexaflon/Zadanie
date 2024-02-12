@@ -1,15 +1,17 @@
 ﻿.dropzone{
     min-height: 30rem;
+
 }
 
 
 .col-5{
     float:left;
 }
-.logs{
+.logs {
     max-height: 200px;
     overflow-y: auto;
-
+    overflow-x: hidden;
+    opacity: 1;
 }
 ::-webkit-scrollbar-button {
     display: none;
@@ -29,4 +31,35 @@
 ::-webkit-scrollbar-thumb {
     background: #ffffff; 
     border-radius: 10px;
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.last-message {
+    animation: fadeIn 1s ease;
+}
+.gradient {
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 100%);
+    border-radius: 10px;
+    padding: 10px;
+}
+.dropzone h2{
+    color:white;
+}
+
+.message {
+    color: white;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 25px 25px;
 }

@@ -1,28 +1,37 @@
 ﻿@using Zadanie.Models
 @inject SharedStateService SharedState
 @inject UserGroupLogger UserLogs
-<div class="d-flex flex-column">
+@inject IJSRuntime JSRuntime
+
+<div class="d-flex flex-column gradient" onmouseover="@((MouseEventArgs e) => InsertIndex = null)">
 <div class="dropzone" 
 @ondrop="OnDropHandler"
      ondragover="event.preventDefault();">
     <h2>Użytkownicy</h2>
-    <div class="dropzone bg-light p-3 my-3 border border-1 rounded">
+    <div class="dropzone p-3 my-3 border-bottom border-1">
         @foreach (var user in Users)
         {
-            <SingleUser User=user _parentList=Users OnStartDrag="OnDragStartHandler" />
+            
+                <SingleUser User=user _parentList=Users
+            OnStartDrag="OnDragStartHandler" />
         }
     </div>
 </div>
-<div class="logs">
+<div class="logs" id="logsContainer">
     @if (UserLogs.logs != null)
     {
-            
-            var logs = UserLogs.logs;
-            logs.Reverse();
-            
-            @foreach (var item in logs)
+            if (UserLogs.logs.Count() > logCount)
             {
-                <div "message">
+                logCount = UserLogs.logs.Count();
+                
+            }
+            var logs = UserLogs.logs;
+            
+            @for(int i=0; i < logs.Count(); i++)
+            {
+                var item = logs[i];
+                var cls = i == 0 ? " last-message" : "";
+                <div class="message @cls">
                     @{
                         var source = $"img/icons/{item.icon}.png";
                     }

@@ -6,12 +6,13 @@
 
 main {
     flex: 1;
+    background-image: linear-gradient(90deg, rgb(50, 39, 103) 0%, #750863 70%);
 }
 
 .sidebar {
-    /*background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);*/
+    
     background-color: #32293F;
-    width: 70px !important;
+    width: 7%!important;
     
 }
 
