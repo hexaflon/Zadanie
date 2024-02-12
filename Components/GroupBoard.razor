@@ -5,8 +5,8 @@
 <div class="menu-group">
 	@foreach(var group in _groups)
 	{
-		<div class="btn @group.Name" 
-			@onclick="() => ChangeGroup(group)"
+		<div class="btn @group.Name @(group == _selected ? "active" : "")"
+			 @onclick="() => ChangeGroup(group)"
 			@ondrop="OnDropHandler"
 			ondragover="event.preventDefault();">
 			@{
@@ -23,8 +23,8 @@
 	@foreach(var item in _selected.Users)
 	{
 		<div class=" user">
-			<SingleUser 
-				User="item"
+			<SingleUser _parentList=_selected.Users
+				User=item
 				OnStartDrag="OnDragStartHandler" />
 		</div>
 	}

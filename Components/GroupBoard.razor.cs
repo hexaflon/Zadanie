@@ -64,6 +64,7 @@ namespace Zadanie.Components
 			var user = SharedState.CurrentDraggedUser;
 			if(user != null)
 			{
+
 				user.Icon = _selected.Name;
 				_selected.Users.Add(user);
 

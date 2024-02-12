@@ -24,15 +24,8 @@
         @User.Surname
     </div>
 
-    <div class="card-footer @(User.Id %   2 ==   0 ? "footer-even" : "footer-odd")">
-        @if (User.Id % 2 == 0)
-        {
-            <img src="img/icons/city-even.png" />
-        }
-        else
-        {
-            <img src="img/icons/city-odd.png" />
-        }
+    <div class="card-footer @GetFooterClass(User)">
+        <img src="@GetFooterIcon(User)" />
         @User.City
     </div>
 </div>

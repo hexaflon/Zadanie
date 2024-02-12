@@ -9,7 +9,7 @@
     <div class="dropzone bg-light p-3 my-3 border border-1 rounded">
         @foreach (var user in Users)
         {
-            <SingleUser User="user" OnStartDrag="OnDragStartHandler" />
+            <SingleUser User=user _parentList=Users OnStartDrag="OnDragStartHandler" />
         }
     </div>
 </div>

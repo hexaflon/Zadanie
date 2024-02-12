@@ -1,0 +1,7 @@
+﻿@using Zadanie.Models
+
+<div class="context-menu" style="display: @(IsVisible ? "block" : "none"); top: @Position.Y; left: @Position.X;">
+    <ul>
+        <li @onclick="LockUser">Zablokuj pozycję użytkownika</li>
+    </ul>
+</div>
