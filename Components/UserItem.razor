@@ -1,15 +1,44 @@
 ﻿
-<div class="col-4">
+<div class="col-5">
 	<h2>Użytkownicy</h2>
 	<div class="dropzone bg-light p-3 my-3 border border-1 rounded">
 		@foreach(var item in Users)
 		{
-			<div class="draggable alert" draggable="true"
-				@ondragstart="@(()=>OnStartDragHandler(item))">
-				<img src="img/@item.Image" />
-				@item.Name
-				@item.Surname
-				@item.City
+			<div class="card draggable" draggable="true"
+			@ondragstart="@(()=>OnStartDragHandler(item))">
+				<div class="card-header">
+
+					@if (item.Icon == null)
+					{
+						<img src="/img/icons/default-icon.png" />
+					}
+					else
+					{
+						<img src=$"/img/icons/{@item.Icon}.png" />
+					}
+				</div>
+				<div class="card-img-top">
+					<img src="img/@item.Image" />
+				</div>
+				
+				<div class="card-body">
+					@item.Name
+					<br />
+					@item.Surname
+				</div>
+
+				<div class="card-footer @(item.Id %  2 ==  0 ? "footer-even" : "footer-odd")">
+					@if (item.Id % 2 == 0)
+					{
+						<img src="img/icons/city-even.png" />
+					}
+					else
+					{
+						<img src="img/icons/city-odd.png" />
+					}
+					@item.City
+				</div>
+				
 			</div>
 		}
 	</div>

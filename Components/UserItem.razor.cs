@@ -14,10 +14,10 @@ namespace Zadanie.Components
 		{
             Users = new List<User>
             {
-				new User("Magda", "Nowakowska", "Warszawa", "businesswoman.png"),
-				new User("Adam", "Kowalski", "Radom", "frowning-concerned-guy-shaking-finger.png"),
-				new User("Piotr", "Piotrowski", "Radom", "chandler  1.png"),
-				new User("Jan", "Nowak", "Radom", "business-composition-with-modern-style  1.png")
+				new User(1,"Magda", "Nowakowska", "Warszawa", "businesswoman.png"),
+				new User(2,"Adam", "Kowalski", "Radom", "frowning-concerned-guy-shaking-finger.png"),
+				new User(3,"Piotr", "Piotrowski", "Radom", "chandler 1.png"),
+				new User(4,"Jan", "Nowak", "Radom", "business-composition-with-modern-style 1.png")
 			};
 		}
 
