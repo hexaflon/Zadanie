@@ -9,7 +9,8 @@ namespace Zadanie.Components
         public List<User> Users { get; set; } = new();
 
 		[Parameter]
-		public EventCallback<User> OnStartDrag {  get; set; }
+		public EventCallback<User> OnDragStart {  get; set; }
+
 		protected override void OnInitialized()
 		{
             Users = new List<User>
@@ -21,9 +22,35 @@ namespace Zadanie.Components
 			};
 		}
 
-		private void OnStartDragHandler(User item)
+		private void OnDragStartHandler(User item)
+		{
+			SharedState.CurrentDraggedUser = item;
+			OnDragStart.InvokeAsync(item);
+			Users.Remove(item);
+			addlog(item, "usunięty z");
+
+
+        }
+		[Parameter]
+		public EventCallback<User> OnDrop { get; set; }
+		private void OnDropHandler()
+		{
+			OnDrop.InvokeAsync();
+			SharedState.CurrentDraggedUser.Icon = null;
+			Users.Add(SharedState.CurrentDraggedUser);
+			addlog(SharedState.CurrentDraggedUser,"przeniesiony do");
+
+		}
+
+        private void addlog(User user, string state)
         {
-			OnStartDrag.InvokeAsync(item);
+			var log = new log
+			{
+				message = $"Użytkownik {user.Name} {user.Surname} Został {state} Listy użytkowników",
+				icon = "default-icon"
+            };
+
+            UserLogs.logs.Add(log);
         }
 
     }

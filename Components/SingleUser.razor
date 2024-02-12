@@ -1,0 +1,38 @@
+﻿@using Zadanie.Models
+@inject SharedStateService SharedState
+@inject UserGroupLogger UserLogs
+
+<div class="card draggable" draggable="true" @ondragstart="OnDragStart">
+    <div class="card-header">
+        @if (User.Icon == null)
+        {
+            <img src="/img/icons/default-icon.png" />
+        }
+        else
+        {
+            var source = $"/img/icons/{@User.Icon}.png";
+            <img src="@source" />
+        }
+    </div>
+    <div class="card-img-top">
+        <img src="img/@User.Image" />
+    </div>
+
+    <div class="card-body">
+        @User.Name
+        <br />
+        @User.Surname
+    </div>
+
+    <div class="card-footer @(User.Id %   2 ==   0 ? "footer-even" : "footer-odd")">
+        @if (User.Id % 2 == 0)
+        {
+            <img src="img/icons/city-even.png" />
+        }
+        else
+        {
+            <img src="img/icons/city-odd.png" />
+        }
+        @User.City
+    </div>
+</div>

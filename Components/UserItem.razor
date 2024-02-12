@@ -1,45 +1,36 @@
-﻿
-<div class="col-5">
-	<h2>Użytkownicy</h2>
-	<div class="dropzone bg-light p-3 my-3 border border-1 rounded">
-		@foreach(var item in Users)
-		{
-			<div class="card draggable" draggable="true"
-			@ondragstart="@(()=>OnStartDragHandler(item))">
-				<div class="card-header">
-
-					@if (item.Icon == null)
-					{
-						<img src="/img/icons/default-icon.png" />
-					}
-					else
-					{
-						<img src=$"/img/icons/{@item.Icon}.png" />
-					}
-				</div>
-				<div class="card-img-top">
-					<img src="img/@item.Image" />
-				</div>
-				
-				<div class="card-body">
-					@item.Name
-					<br />
-					@item.Surname
-				</div>
-
-				<div class="card-footer @(item.Id %  2 ==  0 ? "footer-even" : "footer-odd")">
-					@if (item.Id % 2 == 0)
-					{
-						<img src="img/icons/city-even.png" />
-					}
-					else
-					{
-						<img src="img/icons/city-odd.png" />
-					}
-					@item.City
-				</div>
-				
-			</div>
-		}
-	</div>
+﻿@using Zadanie.Models
+@inject SharedStateService SharedState
+@inject UserGroupLogger UserLogs
+<div class="d-flex flex-column">
+<div class="dropzone" 
+@ondrop="OnDropHandler"
+     ondragover="event.preventDefault();">
+    <h2>Użytkownicy</h2>
+    <div class="dropzone bg-light p-3 my-3 border border-1 rounded">
+        @foreach (var user in Users)
+        {
+            <SingleUser User="user" OnStartDrag="OnDragStartHandler" />
+        }
+    </div>
+</div>
+<div class="logs">
+    @if (UserLogs.logs != null)
+    {
+            
+            var logs = UserLogs.logs;
+            logs.Reverse();
+            
+            @foreach (var item in logs)
+            {
+                <div "message">
+                    @{
+                        var source = $"img/icons/{item.icon}.png";
+                    }
+                    <img src="@source" />
+                    @item.message
+                </div>
+            }
+        }
+    
+</div>
 </div>

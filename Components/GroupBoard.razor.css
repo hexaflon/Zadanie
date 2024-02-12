@@ -2,3 +2,11 @@
 {
     float:left;
 }
+.btn{
+    width:20%;
+}
+.dropzone{
+    min-height: 30em;
+    
+}
+
